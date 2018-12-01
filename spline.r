@@ -91,6 +91,13 @@ ThirdSet <- function(x, y, n){
 QuadraticSpline <- function(x, y, n){
   equations_list <- c()
   
+  o = order(x)
+  x = x[o]
+  y = y[o]
+  
+  print(x)
+  print(y)
+  
   first_set = FirstSet(x, y, n)
   second_set = SecondSet(x, y, n)
   third_set = ThirdSet(x, y, n)
@@ -99,15 +106,16 @@ QuadraticSpline <- function(x, y, n){
   equations_list <- c(equations_list, second_set)
   equations_list <- c(equations_list, third_set)
   
-  print(equations_list)
+  return(equations_list)
 }
 
 
-x <- c(3, 4.5,7, 9)
-y <- c(2.5, 1, 2.5, 0.5)
+x <- c(3, 7,4.5, 9)
+y <- c(2.5, 2.5, 1, 0.5)
 n = length(x)
 
-QuadraticSpline(x, y, n)
+functions_list = QuadraticSpline(x, y, n)
+print(functions_list)
 
 
 
